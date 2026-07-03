@@ -86,7 +86,7 @@ export default fp(
               username: username || user.username,
               firstName: firstName || user.firstName,
               lastName: lastName || user.lastName,
-              role: isAdmin ? 1 : user.role
+              role: isAdmin ? 1 : 0
             }
           })
         }

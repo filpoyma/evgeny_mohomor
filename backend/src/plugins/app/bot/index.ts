@@ -108,7 +108,7 @@ export default fp(
               username,
               firstName,
               lastName,
-              role: isAdmin ? 1 : existingUser.role,
+              role: isAdmin ? 1 : 0,
             },
           });
         }
