@@ -148,8 +148,10 @@ export default fp(
         console.error('🤖 [Telegram Bot Error] TELEGRAM_WEBHOOK_URL is not set but BOT_MODE is set to webhook');
         fastify.log.error('TELEGRAM_WEBHOOK_URL is not set but BOT_MODE is set to webhook');
       } else {
-        const path = `/bot${token}`;
-        const fullUrl = `${webhookUrl}${path}`;
+        const urlObj = new URL(webhookUrl);
+        const urlPath = urlObj.pathname === '/' ? '' : urlObj.pathname.replace(/\/$/, '');
+        const path = `${urlPath}/bot${token}`;
+        const fullUrl = `${urlObj.origin}${path}`;
 
         console.log(`🤖 [Telegram Bot] Setting up Webhook route at Fastify path: ${path}`);
         fastify.post(path, webhookCallback(bot, 'fastify'));
