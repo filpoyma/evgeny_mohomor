@@ -23,10 +23,10 @@ pnpm prisma:deploy
 pnpm run build
 
 if pm2 describe evgeny-muhomor-backend > /dev/null 2>&1; then
-    echo "🔄 Перезапуск существующего процесса в PM2..."
+    echo "🔄 Перезапуск существующего процесса в PM2"
     pm2 restart evgeny-muhomor-backend --update-env --exp-backoff-restart-delay 300
 else
-    echo "🚀 Первый запуск процесса в PM2..."
+    echo "🚀 Первый запуск процесса в PM2"
     pm2 start dist/server.js --name "evgeny-muhomor-backend" --exp-backoff-restart-delay 300
 fi
 pm2 save
