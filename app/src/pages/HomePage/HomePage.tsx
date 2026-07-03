@@ -94,7 +94,7 @@ export const HomePage: React.FC = () => {
       {/* Header */}
       <div className="home-header">
         <h1 className="brand-title">
-          <span>Евгений Мухомор</span>🍄
+          <span>Mushrooms World</span>🍄
         </h1>
         <div className="lang-selector">
           <button
