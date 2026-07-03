@@ -1,0 +1,26 @@
+name: Deploy Application
+
+on:
+  push:
+    branches:
+      - main # Ветка, при пуше в которую запускается деплой
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}       # IP-адрес вашего сервера
+          username: ${{ secrets.SERVER_USER }}   # Имя пользователя (например, ubuntu или root)
+          key: ${{ secrets.SSH_PRIVATE_KEY }}    # Приватный SSH-ключ для авторизации
+          port: ${{ secrets.SERVER_PORT || 22 }} # Порт SSH (обычно 22)
+          script: |
+            # Делаем скрипт исполняемым и запускаем его
+            chmod +x /var/www/evgeny_mohomor/deploy.sh
+            /var/www/evgeny_mohomor/deploy.sh
