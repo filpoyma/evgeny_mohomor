@@ -5,7 +5,7 @@ import { cartActions } from '../../store/reducers/cart';
 import { useProductsQuery } from '../../api/products';
 import { useArticlesQuery } from '../../api/chat';
 import { useProfileQuery } from '../../api/users';
-import { useUpdateProfileMutation } from '../../api/users';
+//import { useUpdateProfileMutation } from '../../api/users';
 import type { IProduct, IArticle } from '../../types';
 
 import LightbulbIcon from '../../assets/icons/lightbulb.svg';
@@ -26,12 +26,12 @@ export const HomePage: React.FC = () => {
   const { data: articles = [], isLoading: articlesLoading } = useArticlesQuery();
 
   // Mutations
-  const updateProfileMutation = useUpdateProfileMutation();
+  // const updateProfileMutation = useUpdateProfileMutation();
 
-  const handleRegionChange = (newRegion: 'Bali' | 'Vietnam') => {
-    const currency = newRegion === 'Bali' ? 'IDR' : 'VND';
-    updateProfileMutation.mutate({ region: newRegion, currency });
-  };
+  // const handleRegionChange = (newRegion: 'Bali' | 'Vietnam') => {
+  //   const currency = newRegion === 'Bali' ? 'IDR' : 'VND';
+  //   updateProfileMutation.mutate({ region: newRegion, currency });
+  // };
 
   const addToCart = (product: IProduct) => {
     dispatch(cartActions.addToCart(product));
@@ -111,36 +111,26 @@ export const HomePage: React.FC = () => {
       </div>
 
       {/* Location selector */}
-      <div className="location-box">
-        <div className="location-title">
-          <span>📍</span>
-          <span>{t.locationTitle}</span>
-        </div>
-        <div className="location-buttons">
-          <button
-            className={`location-btn ${profile?.region === 'Bali' ? 'active' : ''}`}
-            onClick={() => handleRegionChange('Bali')}>
-            Бали 🌴
-          </button>
-          <button
-            className={`location-btn ${profile?.region === 'Vietnam' ? 'active' : ''}`}
-            onClick={() => handleRegionChange('Vietnam')}>
-            Вьетнам 🇻🇳
-          </button>
-        </div>
-      </div>
+      {/*<div className="location-box">*/}
+      {/*  <div className="location-title">*/}
+      {/*    <span>📍</span>*/}
+      {/*    <span>{t.locationTitle}</span>*/}
+      {/*  </div>*/}
+      {/*  <div className="location-buttons">*/}
+      {/*    <button*/}
+      {/*      className={`location-btn ${profile?.region === 'Bali' ? 'active' : ''}`}*/}
+      {/*      onClick={() => handleRegionChange('Bali')}>*/}
+      {/*      Бали 🌴*/}
+      {/*    </button>*/}
+      {/*    <button*/}
+      {/*      className={`location-btn ${profile?.region === 'Vietnam' ? 'active' : ''}`}*/}
+      {/*      onClick={() => handleRegionChange('Vietnam')}>*/}
+      {/*      Вьетнам 🇻🇳*/}
+      {/*    </button>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
-      {/* AI Selector block */}
-      <div className="ai-selection-box">
-        <div className="ai-icon-pulse">
-          <LightbulbIcon className="ai-icon" />
-        </div>
-        <h2 className="ai-title">{t.aiSelector}</h2>
-        <p className="ai-desc">{t.aiSelectorDesc}</p>
-        <button className="ai-btn" onClick={() => navigate('/ai-survey')}>
-          ⚡ {t.aiSelectorBtn}
-        </button>
-      </div>
+
 
       {/* Novelties section */}
       <div>
@@ -171,6 +161,18 @@ export const HomePage: React.FC = () => {
             ))}
           </div>
         )}
+      </div>
+
+      {/* AI Selector block */}
+      <div className="ai-selection-box">
+        <div className="ai-icon-pulse">
+          <LightbulbIcon className="ai-icon" />
+        </div>
+        <h2 className="ai-title">{t.aiSelector}</h2>
+        <p className="ai-desc">{t.aiSelectorDesc}</p>
+        <button className="ai-btn" onClick={() => navigate('/ai-survey')}>
+          ⚡ {t.aiSelectorBtn}
+        </button>
       </div>
 
       {/* Referral Program */}
