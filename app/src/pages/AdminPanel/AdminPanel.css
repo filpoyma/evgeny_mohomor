@@ -1,0 +1,315 @@
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-header {
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-tabs {
+  display: flex;
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid rgba(226, 125, 96, 0.1);
+}
+
+.admin-tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-tab-btn.active {
+  background-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(226, 125, 96, 0.25);
+}
+
+/* Analytics Tab */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.stat-card-large {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(226, 125, 96, 0.15) 0%, rgba(212, 163, 115, 0.08) 100%);
+  border: 1px solid rgba(226, 125, 96, 0.25);
+}
+
+.admin-stat-card {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 125, 96, 0.08);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--subtitle-text-color);
+  text-transform: uppercase;
+}
+
+.admin-stat-val {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+/* Products List Admin */
+.admin-actions-bar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-add-btn {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(226, 125, 96, 0.3);
+}
+
+.admin-add-btn:active {
+  transform: scale(0.96);
+}
+
+.admin-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-product-card {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid rgba(226, 125, 96, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.admin-prod-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.admin-prod-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-prod-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.admin-prod-meta {
+  font-size: 11px;
+  color: var(--subtitle-text-color);
+}
+
+.admin-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-icon-btn {
+  background-color: var(--surface-alt-color);
+  border: 1px solid var(--color-border-light);
+  color: var(--text-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.action-icon-btn:active {
+  transform: scale(0.9);
+}
+
+/* Admin Form Modal/Panel */
+.admin-form-container {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 125, 96, 0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.price-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.form-submit-btn {
+  flex: 2;
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form-cancel-btn {
+  flex: 1;
+  background-color: var(--surface-alt-color);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text-muted);
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Orders List Admin */
+.admin-order-card {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 125, 96, 0.08);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.admin-order-meta-info {
+  font-size: 12px;
+  color: var(--subtitle-text-color);
+  line-height: 1.4;
+}
+
+.status-change-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(226, 125, 96, 0.08);
+}
+
+.admin-status-select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--color-border-light);
+  color: var(--text-color);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* Users List Admin */
+.admin-user-card {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 125, 96, 0.08);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.user-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-name-tag {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-title-text {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.user-bonus-pill {
+  background-color: rgba(212, 163, 115, 0.15);
+  color: var(--secondary-color);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.adjust-balance-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.adjust-input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--color-border-light);
+  color: var(--text-color);
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.adjust-btn {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.adjust-btn:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,22 @@
+node_modules
+dist
+coverage
+
+# env
+#.env
+#.env.*.local
+
+# logs
+*.log
+logs
+
+# editor
+.vscode
+.idea
+.DS_Store
+
+# prisma
+/prisma/migrations/dev.db*
+src/generated/
+
+.env

@@ -1,0 +1,79 @@
+// Prisma schema for Evgeny Muhomor Telegram Mini App
+
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../src/generated/prisma"
+  previewFeatures = []
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id // Telegram User ID
+  username     String?
+  firstName    String?
+  lastName     String?
+  role         Int      @default(0) // 0 = User, 1 = Admin
+  region       String   @default("Bali") // Bali, Vietnam
+  currency     String   @default("IDR") // IDR, VND, USDT, RUB
+  address      String?  @default("")
+  bonusBalance Float    @default(0.0)
+  
+  referredById String?
+  referredBy   User?    @relation("Referrals", fields: [referredById], references: [id])
+  referrals    User[]   @relation("Referrals")
+
+  orders       Order[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  category    String   // fly_agaric, panther, regular, tincture, set
+  priceIdr    Float    // Bali price in IDR (Rp)
+  priceVnd    Float    // Vietnam price in VND (₫)
+  priceUsdt   Float    // price in USDT
+  priceRub    Float    // price in RUB (₽)
+  imageUrl    String
+  size        String   // "50г", "100г", "2 мл", "10 мл", etc.
+  stock       Int      @default(100)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  items         Json     // Array of: { productId, name, size, quantity, price, currency }
+  totalAmount   Float
+  currency      String   // IDR, VND, USDT, RUB
+  status        String   @default("Pending") // Pending, Paid, Shipped, Cancelled
+  paymentMethod String   // Cash, Crypto, Bank
+  address       String
+  phone         String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Article {
+  id        String   @id @default(uuid())
+  title     String
+  content   String   @db.Text
+  imageUrl  String
+  readTime  String   @default("5 мин")
+  createdAt DateTime @default(now())
+}
+
+model Referral {
+  id          String   @id @default(uuid())
+  referrerId  String
+  refereeId   String
+  bonusEarned Float
+  createdAt   DateTime @default(now())
+}

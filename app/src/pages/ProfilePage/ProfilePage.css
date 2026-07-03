@@ -1,0 +1,241 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(226, 125, 96, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.avatar-fallback {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(226, 125, 96, 0.3);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.profile-tag {
+  font-size: 13px;
+  color: var(--subtitle-text-color);
+}
+
+/* Settings block */
+.settings-block {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(226, 125, 96, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--subtitle-text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.settings-choices {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.choice-btn {
+  flex: 1;
+  min-width: 60px;
+  background-color: var(--surface-alt-color);
+  border: 1px solid var(--color-border-light);
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choice-btn:active {
+  transform: scale(0.95);
+}
+
+.choice-btn.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(226, 125, 96, 0.3);
+}
+
+/* Save Address Form */
+.address-form {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(226, 125, 96, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.address-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.address-desc {
+  font-size: 12px;
+  color: var(--subtitle-text-color);
+  line-height: 1.4;
+}
+
+.address-textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--color-border-light);
+  color: var(--text-color);
+  padding: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  border-radius: 10px;
+  min-height: 80px;
+  resize: none;
+  width: 100%;
+}
+
+.address-textarea:focus {
+  border-color: var(--primary-color);
+}
+
+.save-btn {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(226, 125, 96, 0.25);
+}
+
+.save-btn:active {
+  transform: scale(0.97);
+}
+
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Orders History */
+.orders-history {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-history-card {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  border: 1px solid rgba(226, 125, 96, 0.08);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.order-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(226, 125, 96, 0.1);
+  padding-bottom: 6px;
+}
+
+.order-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.order-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.order-status.Pending {
+  background-color: rgba(212, 163, 115, 0.15);
+  color: var(--secondary-color);
+}
+
+.order-status.Paid {
+  background-color: rgba(46, 125, 50, 0.15);
+  color: #81c784;
+}
+
+.order-status.Shipped {
+  background-color: rgba(226, 125, 96, 0.15);
+  color: var(--primary-color);
+}
+
+.order-status.Cancelled {
+  background-color: rgba(198, 40, 40, 0.15);
+  color: #e57373;
+}
+
+.order-history-items {
+  font-size: 12px;
+  color: var(--subtitle-text-color);
+  line-height: 1.4;
+}
+
+.order-history-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 4px;
+}

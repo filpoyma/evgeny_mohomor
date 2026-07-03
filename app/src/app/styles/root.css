@@ -1,0 +1,129 @@
+:root {
+    --primary-color: #E27D60;            /* Warm Terracotta/Mushroom Orange */
+    --secondary-color: #D4A373;          /* Warm Sand/Gold Accent */
+    --background-color: #0F1110;         /* Obsidian Charcoal (Warm black) */
+    --surface-color: #181B1A;            /* Deep Forest Slate */
+    --surface-alt-color: #222625;        /* Soft Charcoal Slate */
+    --accent-color: #D4A373;
+    --header-height: 80px;
+    --subtitle-text-color: #8E9A94;      /* Sage/Ash grey */
+    --header-bg: rgba(24, 27, 26, 0.95);
+    --border-color: rgba(226, 125, 96, 0.2);
+    --table-header-bg: rgba(24, 27, 26, 0.5);
+    --table-text-color: rgba(244, 241, 222, 0.6);
+    --table-title-text-color: rgba(244, 241, 222, 1);
+    --text-color: #F4F1DE;               /* Soft Cream White */
+    --image-border-radius: 16px;
+    --map-border-radius: 16px;
+    --color-text-muted: #8E9A94;
+    --color-error: #e74c3c;
+    --color-modal-bg: #181B1A;
+    --color-black: #000;
+    --color-white: #fff;
+    --color-map-tooltip-bg: #222625;
+    --color-border-light: #2c312f;
+    --modal-accent: #E27D60;
+    --modal-accent-dark: #b85b42;
+    --modal-bg: #181B1A;
+    --modal-border: #222625;
+    --modal-text: #F4F1DE;
+    --input-bg: #222625;
+    --input-radius: 10px;
+    --button-radius: 10px;
+    --buttin-height: 44px;
+    --color-surface-alt: #222625;
+    --color-border-input: #2c312f;
+    --color-text-subtle: #8E9A94;
+    --color-heading: #F4F1DE;
+    --color-bullet-border: #E27D60;
+    --color-modal-surface: #222625;
+    --color-modal-cell-bg: #181B1A;
+    --color-disabled-bg: #2c312f;
+    --color-disabled-text: #5e6662;
+    --color-success: #2e7d32;
+    --color-success-selected: #4caf50;
+    --color-danger: #c62828;
+    --color-danger-bg: #2d1818;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*no zoom*/
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    /*line-height: 1.6;*/
+    color: var(--primary-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+html, body {
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+}
+
+/* Единый радиус скругления для всех текстовых полей.
+   Чекбоксы не затрагиваются — у них более специфичное правило ниже. */
+input:not([type='checkbox']):not([type='radio']),
+textarea,
+select {
+  border-radius: var(--input-radius);
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+}
+
+input[type='checkbox']:checked {
+  background-color: var(--color-white);
+  border-color: var(--primary-color);
+}
+
+input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  left: 0.28rem;
+  top: 0;
+  width: 0.25rem;
+  height: 0.5rem;
+  border: solid var(--primary-color);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+input[type='checkbox']:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
