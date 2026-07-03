@@ -7,10 +7,10 @@ set -e
 PROJECT_DIR="/var/www/evgeny_mohomor"
 cd "$PROJECT_DIR"
 
-echo "🚀 Начало процесса деплоя..."
+echo "🚀 Начало процесса деплоя."
 
 # 1. Стягиваем последние изменения
-echo "📥 Получение обновлений из Git (принудительное обновление)..."
+echo "📥 Получение обновлений из Git."
 git fetch --all
 git reset --hard origin/main
 git clean -fd
