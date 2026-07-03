@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "tsx watch --env-file=.env ./src/server.ts",
-    "build": "prisma generate && tsc",
+    "build": "prisma generate && tsc && mkdir -p dist/generated && cp -R src/generated/prisma dist/generated/",
     "start": "node dist/server.js",
     "type-check": "tsc --noEmit",
     "prisma:generate": "prisma generate",
