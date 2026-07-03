@@ -140,7 +140,7 @@ async function main() {
   // 3. Seed an Admin User for testing
   await prisma.user.create({
     data: {
-      id: '123456789', // Matches our mock admin tg ID / testing ID
+      id: process.env.DEV_USER_ID || '',
       username: 'Romantra',
       firstName: 'Roman',
       lastName: 'Parmen',

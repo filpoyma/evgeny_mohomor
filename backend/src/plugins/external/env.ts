@@ -28,6 +28,7 @@ declare module 'fastify' {
       TELEGRAM_BOT_MODE: 'polling' | 'webhook'
       TELEGRAM_WEBHOOK_URL: string
       TELEGRAM_MINI_APP_URL: string
+      DEV_USER_ID: string
     }
   }
 }
@@ -67,7 +68,8 @@ const schema = {
     ADMIN_CHAT_ID: { type: 'string', default: '' },
     TELEGRAM_BOT_MODE: { type: 'string', enum: ['polling', 'webhook'], default: 'polling' },
     TELEGRAM_WEBHOOK_URL: { type: 'string', default: '' },
-    TELEGRAM_MINI_APP_URL: { type: 'string', default: 'http://localhost:5173' }
+    TELEGRAM_MINI_APP_URL: { type: 'string', default: 'http://localhost:5173' },
+    DEV_USER_ID: { type: 'string', default: '147917436' }
   }
 }
 

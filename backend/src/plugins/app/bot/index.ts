@@ -59,6 +59,11 @@ export default fp(
       const lastName = ctx.from?.last_name ?? '';
       console.log('file-index.ts userId:', userId);
       if (userId) {
+        const adminIds = fastify.config.ADMIN_CHAT_ID
+          ? fastify.config.ADMIN_CHAT_ID.split(',').map((id) => id.trim())
+          : [];
+        const isAdmin = adminIds.includes(userId);
+
         // Find if user already exists
         const existingUser = await fastify.prisma.user.findUnique({
           where: { id: userId },
@@ -80,9 +85,7 @@ export default fp(
             }
           }
 
-          const isAdmin = userId === fastify.config.ADMIN_CHAT_ID;
-          console.log('file-index.ts userId:1', userId);
-          console.log('file-index.ts fastify.config.ADMIN_CHAT_ID:', fastify.config.ADMIN_CHAT_ID);
+          console.log('file-index.ts userId:1', userId, 'isAdmin:', isAdmin);
           // Register user
           await fastify.prisma.user.create({
             data: {
@@ -97,9 +100,7 @@ export default fp(
             },
           });
         } else {
-          const isAdmin = userId === fastify.config.ADMIN_CHAT_ID;
-          console.log('file-index.ts userId:2', userId);
-          console.log('file-index.ts fastify.config.ADMIN_CHAT_ID:', fastify.config.ADMIN_CHAT_ID);
+          console.log('file-index.ts userId:2', userId, 'isAdmin:', isAdmin);
           // Update credentials if changed
           await fastify.prisma.user.update({
             where: { id: userId },

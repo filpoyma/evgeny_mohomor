@@ -20,7 +20,7 @@ declare module 'fastify' {
 export default fp(
   async (fastify: FastifyInstance) => {
     // Development fallback ID (matches our seeded admin user)
-    const DEV_USER_ID = '123456789'
+    const DEV_USER_ID = fastify.config.DEV_USER_ID
 
     fastify.decorate('authenticate', async (request: FastifyRequest, reply: FastifyReply) => {
       let tgId = request.headers['x-tg-user-id'] as string
@@ -40,6 +40,11 @@ export default fp(
       const lastName = (request.headers['x-tg-last-name'] as string) || ''
 
       try {
+        const adminIds = fastify.config.ADMIN_CHAT_ID
+          ? fastify.config.ADMIN_CHAT_ID.split(',').map((id) => id.trim())
+          : [];
+        const isAdmin = tgId === DEV_USER_ID || adminIds.includes(tgId);
+
         let user = await fastify.prisma.user.findUnique({
           where: { id: tgId }
         })
@@ -61,8 +66,6 @@ export default fp(
             }
           }
 
-          const isAdmin = tgId === DEV_USER_ID || tgId === fastify.config.ADMIN_CHAT_ID
-
           user = await fastify.prisma.user.create({
             data: {
               id: tgId,
@@ -76,8 +79,6 @@ export default fp(
             }
           })
         } else {
-          const isAdmin = tgId === DEV_USER_ID || tgId === fastify.config.ADMIN_CHAT_ID
-
           // Keep username and names updated
           user = await fastify.prisma.user.update({
             where: { id: tgId },

@@ -127,22 +127,30 @@ export function createOrdersService(fastify: FastifyInstance) {
           )
 
           // Notify Admin (if ADMIN_CHAT_ID is set)
-          const adminChatId = fastify.config.ADMIN_CHAT_ID || '123456789'
-          if (adminChatId) {
+          const adminChatIds = fastify.config.ADMIN_CHAT_ID
+            ? fastify.config.ADMIN_CHAT_ID.split(',').map(id => id.trim())
+            : [];
+          if (adminChatIds.length > 0) {
             const itemsList = input.items.map(item => `- ${item.name} (${item.size}) x${item.quantity}`).join('\n')
-            await fastify.bot.api.sendMessage(
-              adminChatId,
-              `🚨 *Новый заказ в магазине!*\n\n` +
-              `Покупатель: ${user.firstName} ${user.lastName} (@${user.username || 'нет_username'})\n` +
-              `ID пользователя: \`${user.id}\`\n` +
-              `Номер заказа: \`${order.id.slice(0, 8)}\`\n` +
-              `Товары:\n${itemsList}\n\n` +
-              `Итого к оплате: *${formattedTotal} ${currencySymbol}* (${input.paymentMethod})\n` +
-              `Телефон: ${input.phone}\n` +
-              `Адрес: ${input.address}\n` +
-              `Использована скидка: ${discountApplied.toLocaleString()} ${currencySymbol}`,
-              { parse_mode: 'Markdown' }
-            )
+            for (const adminId of adminChatIds) {
+              try {
+                await fastify.bot.api.sendMessage(
+                  adminId,
+                  `🚨 *Новый заказ в магазине!*\n\n` +
+                  `Покупатель: ${user.firstName} ${user.lastName} (@${user.username || 'нет_username'})\n` +
+                  `ID пользователя: \`${user.id}\`\n` +
+                  `Номер заказа: \`${order.id.slice(0, 8)}\`\n` +
+                  `Товары:\n${itemsList}\n\n` +
+                  `Итого к оплате: *${formattedTotal} ${currencySymbol}* (${input.paymentMethod})\n` +
+                  `Телефон: ${input.phone}\n` +
+                  `Адрес: ${input.address}\n` +
+                  `Использована скидка: ${discountApplied.toLocaleString()} ${currencySymbol}`,
+                  { parse_mode: 'Markdown' }
+                )
+              } catch (err) {
+                fastify.log.error(err, `Failed to send order notification to admin ${adminId}`)
+              }
+            }
           }
         } catch (botErr) {
           fastify.log.warn(botErr, 'Failed to send bot notification')
