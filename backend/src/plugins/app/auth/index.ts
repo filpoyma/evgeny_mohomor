@@ -44,6 +44,7 @@ export default fp(
           ? fastify.config.ADMIN_CHAT_ID.split(',').map((id) => id.trim())
           : [];
         const isAdmin = tgId === DEV_USER_ID || adminIds.includes(tgId);
+        console.log(`👤 [Auth Debug] tgId: "${tgId}", DEV_USER_ID: "${DEV_USER_ID}", adminIds: [${adminIds.join(', ')}], isAdmin: ${isAdmin}`);
 
         let user = await fastify.prisma.user.findUnique({
           where: { id: tgId }
